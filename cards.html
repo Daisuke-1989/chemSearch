@@ -18,7 +18,7 @@
       function showSmiles(jsmeEvent) {
         var jsme = jsmeEvent.src;
         var molfile = jsme.molFile();
-        console.log(molfile);
+        // console.log(molfile);
         worker.postMessage({ 'cmd': 'query', 'msg': molfile });
       }
       jsmeApplet.setAfterStructureModifiedCallback(showSmiles);
@@ -98,9 +98,9 @@
           <a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
         </div>
         <p>
-            <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>.
-            The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. <br>
-          </p>
+          <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>.
+          The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. <br>
+        </p>
       </div>
     </div>
   </footer>
@@ -111,6 +111,15 @@
   <script>
     var app = new Vue({
       el: '#app',
+      created() {
+        // console.log(this.cardData)
+      },
+      watch: {
+        cardData: function (newVal, oldVal) {
+          console.log(newVal, oldVal)
+          OCL.StructureView.showStructures('actstruct');
+        }
+      },
       data: {
         cardData: cardsData
       }

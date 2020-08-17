@@ -20,5 +20,5 @@ worker.addEventListener('message', function (e) {
   //   }))
   //   OCL.StructureView.showStructures('actstruct');
   // };
-  OCL.StructureView.showStructures('actstruct');
+  // OCL.StructureView.showStructures('actstruct');
 }, false);
