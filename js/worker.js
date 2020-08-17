@@ -7,19 +7,19 @@ self.addEventListener('message', function (e) {
         response = r;
         return response.json();
       }).then(function (r) {
-        console.log("confirm");
-        console.log(r);
+        // console.log("confirm");
+        // console.log(r);
         db = r.molucules;
         var queryMol = OCL.Molecule.fromMolfile(data.msg + '');
         var targetMW = queryMol.getMolecularFormula().relativeWeight;
-        console.log(targetMW);
+        // console.log(targetMW);
         var index = queryMol.getIndex();
         var targetID = queryMol.getIDCode();
         var intermediate = [];
         var result = [];
         var similarity;
         var length = db.length;
-        console.log(db);
+        // console.log(db);
         for (i = 0, ii = length; i < ii; i++) {
           if (db[i]['value'] === targetID) {
             similarity = 1e10;
@@ -35,13 +35,13 @@ self.addEventListener('message', function (e) {
           result.push(intermediate[i][0]);
         }
         var molArray = result.slice(0, 8);
-        console.log(result.slice(0, 8));
+        // console.log(result.slice(0, 8));
 
         self.postMessage('Data: ' + JSON.stringify(molArray));
         return db;
       }).catch(function (err) {
-        console.log(err);
-        console.log('Fetch problem: ' + err.message);
+        // console.log(err);
+        // console.log('Fetch problem: ' + err.message);
       });
   };
 }, false);
